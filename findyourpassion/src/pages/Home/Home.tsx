@@ -7,7 +7,7 @@ import {
   Image,
   Pressable,
 } from 'react-native';
-import React from 'react';
+import React, {useState} from 'react';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -21,17 +21,21 @@ import {DEVICE_HEIGHT, DEVICE_WIDTH} from '../../utils/Diimensions';
 import {TouchableOpacity} from 'react-native';
 import {myfeed} from '../../Data/myfeed';
 import PostCard from './PostCard';
+import MyBottomsheet from '../../components/MyBottomshet';
+import MyModal from '../../components/MyModal';
 
 export default function Home() {
   const {colors} = useGlobal();
+
   return (
     <SafeAreaView>
+     
+
       <View style={[styles.header, {backgroundColor: colors?.BackgroundColor}]}>
         <Text
           style={{
             fontSize: 26,
             fontWeight: '700',
-            fontFamily: 'roboto',
             color: colors?.AppThemeColor,
             fontStyle: 'italic',
           }}>
@@ -39,7 +43,7 @@ export default function Home() {
         </Text>
         <Octicons name="bell-fill" size={25} color={colors?.AppThemeColor} />
       </View>
-      
+
       <View style={{flexDirection: 'row'}}>
         <FlatList
           data={[
@@ -52,7 +56,7 @@ export default function Home() {
           ]}
           showsHorizontalScrollIndicator={false}
           horizontal={true}
-          renderItem={({item}) => (
+          renderItem={({item, index}) => (
             <TouchableOpacity
               style={[
                 styles.tileview,
@@ -63,15 +67,14 @@ export default function Home() {
               </Text>
             </TouchableOpacity>
           )}
+          keyExtractor={index => index}
         />
       </View>
 
       <FlatList
         data={myfeed}
         style={{marginBottom: DEVICE_HEIGHT * 0.14}}
-        renderItem={({item}) => (
-          <PostCard item={item} />
-        )}
+        renderItem={({item, index}) => <PostCard item={item} key={index} />}
       />
     </SafeAreaView>
   );
@@ -89,11 +92,9 @@ const styles = StyleSheet.create({
   tileview: {padding: 10, borderRadius: 5, margin: 5},
 
   personview: {
-    // marginTop: 30,
     marginBottom: 5,
     flexDirection: 'row',
     alignItems: 'flex-start',
-    // backgroundColor: 'red'
   },
   personname: {fontSize: 16, fontWeight: '600', marginLeft: 10},
   persontitle: {fontSize: 14, marginLeft: 10},

@@ -12,7 +12,7 @@ export default function Splash() {
      source={require('../assets/debatewhitesplash.png')}
      style={{width: 150, height: 150}}
     />
-    <Text style={{fontSize: 28, margin: 10,fontWeight: 'bold', color: colors?.textColor}}>Debate App</Text>
+    <Text style={{fontSize: 28, margin: 10,fontWeight: 'bold', color: colors?.BackgroundColor}}>Find Your Passion</Text>
   </View>
   )
 }

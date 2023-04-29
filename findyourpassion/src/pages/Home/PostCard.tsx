@@ -1,13 +1,23 @@
-import { View, Text, Image, Pressable, StyleSheet } from 'react-native'
-import React from 'react'
+import { View, Text, Image, Pressable, StyleSheet, TouchableOpacity } from 'react-native'
+import React, { useState } from 'react'
 import { DEVICE_HEIGHT, DEVICE_WIDTH } from '../../utils/Diimensions';
 import { useGlobal } from '../../Hooks/GloblaContext';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import MyModal from '../../components/MyModal';
+import { Elipsis } from '../../utils/constants';
+import { useNavigation } from '@react-navigation/native';
 
 export default function PostCard({item}) {
+  const navigation = useNavigation();
+
     const {colors} = useGlobal()
+    const [showImg, setShowImg] = useState({
+      show: false,
+      img: ''
+    })
+
   return (
-    <View
+    <TouchableOpacity
             style={{
               width: DEVICE_WIDTH * 0.95,
               backgroundColor: colors?.BackgroundColor,
@@ -16,7 +26,10 @@ export default function PostCard({item}) {
               alignSelf: 'center',
               borderRadius: 15,
               marginTop: 10,
-            }}>
+            }} onPress={() => navigation.navigate('Fullpost', {
+              item: item
+            })}>
+
             <View style={{alignSelf: 'flex-start', marginLeft: -10}}>
               <View style={styles.personview}>
                 <Image
@@ -34,6 +47,8 @@ export default function PostCard({item}) {
                 </View>
               </View>
             </View>
+
+            <Pressable onPress={() => setShowImg({show: true, img: item.img})}>
             <Image
               source={{uri: item.img}}
               style={{
@@ -42,6 +57,7 @@ export default function PostCard({item}) {
                 borderRadius: 15,
               }}
             />
+            </Pressable>
             <Text
               style={{
                 fontSize: 14,
@@ -49,7 +65,7 @@ export default function PostCard({item}) {
                 marginLeft: -10,
                 marginTop: 10,
               }}>
-              {item.detail}
+              {Elipsis(item.detail, 150)}
             </Text>
 
             <View
@@ -121,7 +137,30 @@ export default function PostCard({item}) {
                 </Text>
               </Pressable>
             </View>
+
+            <MyModal
+        visible={showImg.show}
+        onDismiss={() => {}}
+        children={
+          <View
+            style={{
+              height: DEVICE_HEIGHT,
+              width: DEVICE_WIDTH,
+              alignItems: 'center',
+              justifyContent: 'center',
+              backgroundColor: '#000',
+            }}>
+            <MaterialCommunityIcons name="close" size={30} color={'#fff'} style={{position: 'absolute', top: 10, right: 10, zIndex: 9999}} onPress={() => setShowImg({show: false, img: ''})}/>
+            <Image
+              source={{
+                uri: showImg.img,
+              }}
+              style={{width: DEVICE_WIDTH, height: '100%', resizeMode: 'contain'}}
+            />
           </View>
+        }
+      />
+          </TouchableOpacity>
   )
 }
 
