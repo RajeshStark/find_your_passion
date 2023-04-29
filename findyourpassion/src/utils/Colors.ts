@@ -1,14 +1,14 @@
 
 
 const light = {
-    AppThemeColor: '#FF0075',
+    AppThemeColor:  '#5D3FD3', //'#40B5AD',
     BackgroundColor : "#fff",
     textColor: '#09051C',
     cardBackground : "#fff"
   }
   
   const dark = {
-    AppThemeColor : '#FF0075',
+    AppThemeColor :  '#5D3FD3', //'#40B5AD',
     BackgroundColor : "#000",
     textColor : '#fff',
     cardBackground : "#252525"

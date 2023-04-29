@@ -1,16 +1,11 @@
-import React from 'react';
-import {Alert, Text} from 'react-native';
+import React from 'react'
+import MainStack from './src/navigation/Mainstack'
+import { GlobalProvider } from './src/Hooks/GloblaContext'
 
 export default function App() {
   return (
-    <Text
-      style={{
-        fontSize: 18,
-        margin: 20,
-        padding: 10,
-      }}>
-      {' '}
-      My app{' '}
-    </Text>
-  );
+    <GlobalProvider> 
+     <MainStack/>
+    </GlobalProvider>
+  )
 }
