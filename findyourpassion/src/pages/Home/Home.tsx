@@ -26,6 +26,7 @@ import MyModal from '../../components/MyModal';
 
 export default function Home() {
   const {colors} = useGlobal();
+  const [showhead, setShowHead] = useState(true);
 
   return (
     <SafeAreaView>
@@ -44,7 +45,9 @@ export default function Home() {
         <Octicons name="bell-fill" size={25} color={colors?.AppThemeColor} />
       </View>
 
-      <View style={{flexDirection: 'row'}}>
+      {
+        showhead ?
+        <View style={{flexDirection: 'row'}}>
         <FlatList
           data={[
             'My Feed',
@@ -70,11 +73,15 @@ export default function Home() {
           keyExtractor={index => index}
         />
       </View>
+      :
+      null
+      }
 
       <FlatList
         data={myfeed}
         style={{marginBottom: DEVICE_HEIGHT * 0.14}}
         renderItem={({item, index}) => <PostCard item={item} key={index} />}
+        keyExtractor={(item, index) => index}
       />
     </SafeAreaView>
   );

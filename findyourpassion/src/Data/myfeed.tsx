@@ -7,6 +7,7 @@ export const myfeed = [
     media: [
       {
         img: 'https://media.istockphoto.com/id/475341930/photo/breathe-deep.jpg?s=612x612&w=0&k=20&c=xFE6rYH4HjUfuFFqyCLB8IaBATAB3_50xfeoLqtWJaI=',
+        type: 'image'
       },
     ],
     img: 'https://media.istockphoto.com/id/475341930/photo/breathe-deep.jpg?s=612x612&w=0&k=20&c=xFE6rYH4HjUfuFFqyCLB8IaBATAB3_50xfeoLqtWJaI=',
@@ -28,7 +29,12 @@ export const myfeed = [
       'https://png.pngitem.com/pimgs/s/78-785878_batman-icon-batman-avatar-icon-hd-png-download.png',
     media: [
       {
+        img:'https://cdn.pixabay.com/photo/2015/05/07/11/02/guitar-756326__480.jpg',
+        type: 'image'
+      },
+      {
         img: 'https://media.istockphoto.com/id/475341930/photo/breathe-deep.jpg?s=612x612&w=0&k=20&c=xFE6rYH4HjUfuFFqyCLB8IaBATAB3_50xfeoLqtWJaI=',
+        type: 'image'
       },
     ],
     img: 'https://cdn.pixabay.com/photo/2015/05/07/11/02/guitar-756326__480.jpg',
@@ -51,6 +57,7 @@ export const myfeed = [
     media: [
       {
         img: 'https://media.istockphoto.com/id/475341930/photo/breathe-deep.jpg?s=612x612&w=0&k=20&c=xFE6rYH4HjUfuFFqyCLB8IaBATAB3_50xfeoLqtWJaI=',
+        type: 'image'
       },
     ],
     img: 'https://www.thedailymeal.com/img/gallery/basic-cooking-methods-you-need-to-know/Basic-Cooking-Methods.jpg',
@@ -72,6 +79,19 @@ export const myfeed = [
     media: [
       {
         img: 'https://media.istockphoto.com/id/475341930/photo/breathe-deep.jpg?s=612x612&w=0&k=20&c=xFE6rYH4HjUfuFFqyCLB8IaBATAB3_50xfeoLqtWJaI=',
+        type: 'image'
+      },
+      {
+        img: 'https://media.istockphoto.com/id/475341930/photo/breathe-deep.jpg?s=612x612&w=0&k=20&c=xFE6rYH4HjUfuFFqyCLB8IaBATAB3_50xfeoLqtWJaI=',
+        type: 'image'
+      },
+      {
+        img: 'https://media.istockphoto.com/id/475341930/photo/breathe-deep.jpg?s=612x612&w=0&k=20&c=xFE6rYH4HjUfuFFqyCLB8IaBATAB3_50xfeoLqtWJaI=',
+        type: 'image'
+      },
+      {
+        img: 'https://media.istockphoto.com/id/475341930/photo/breathe-deep.jpg?s=612x612&w=0&k=20&c=xFE6rYH4HjUfuFFqyCLB8IaBATAB3_50xfeoLqtWJaI=',
+        type: 'image'
       },
     ],
     img: 'https://res.cloudinary.com/dwzmsvp7f/image/fetch/q_75,f_auto,w_1316/https%3A%2F%2Fmedia.insider.in%2Fimage%2Fupload%2Fc_crop%2Cg_custom%2Fv1655197994%2Frgvjfkckn8vsrrzbgli8.jpg',
@@ -87,6 +107,12 @@ export const myfeed = [
   },
 ];
 
+
+
+
+
+
+
 export const commentData = [
   {
     name: 'Rajesh Sangapogu',
@@ -96,6 +122,8 @@ export const commentData = [
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti blanditiis voluptates explicabo adipisci est expedita, et quam! Quaerat saepe amet atque numquam, ex totam illum. Repellendus quod ipsa totam pariatur.',
     claps: 20,
     isclapped: true,
+    commentor_id: "abc",
+    img: 'https://media.istockphoto.com/id/475341930/photo/breathe-deep.jpg?s=612x612&w=0&k=20&c=xFE6rYH4HjUfuFFqyCLB8IaBATAB3_50xfeoLqtWJaI=',
     replies: [
       {
         name: 'Rajesh Sangapogu',
@@ -105,6 +133,8 @@ export const commentData = [
           'Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti blanditiis voluptates explicabo adipisci est expedita, et quam! Quaerat saepe amet atque numquam, ex totam illum. Repellendus quod ipsa totam pariatur.',
         claps: 20,
         isclapped: true,
+        commentor_id: "abc"
+
       },
       {
         name: 'Rajesh Sangapogu',
@@ -114,6 +144,7 @@ export const commentData = [
           'Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti blanditiis voluptates explicabo adipisci est expedita, et quam! Quaerat saepe amet atque numquam, ex totam illum. Repellendus quod ipsa totam pariatur.',
         claps: 20,
         isclapped: true,
+        commentor_id: "abc"
       },
     ],
   },
@@ -124,6 +155,7 @@ export const commentData = [
     comment: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti blanditiis voluptates explicabo adipisci est expedita, et quam! Quaerat saepe amet atque numquam, ex totam illum. Repellendus quod ipsa totam pariatur.',
     claps: 1,
     isclapped: true,
+    commentor_id: "acb",
   },
 
   {
@@ -132,5 +164,6 @@ export const commentData = [
     comment: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti blanditiis voluptates explicabo adipisci est expedita, et quam! Quaerat saepe amet atque numquam, ex totam illum. Repellendus quod ipsa totam pariatur.',
     claps: 20,
     isclapped: true,
+    commentor_id: "ccf",
   },
 ];
