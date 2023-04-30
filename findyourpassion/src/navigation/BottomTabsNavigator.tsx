@@ -148,7 +148,7 @@ export default function MyTabs() {
               What do you wanna post?
             </Text>
 {
-  ['Regular Post', 'Blog Post'].map((i) =>  <TouchableOpacity
+  ['Regular Post', 'Blog Post'].map((i, index) =>  <TouchableOpacity
   onPress={() =>
     setVisible({
       ...visible,
@@ -157,7 +157,7 @@ export default function MyTabs() {
       type: i,
     })
   }
-  style={{alignItems:'center', margin: 10 }}>
+  style={{alignItems:'center', margin: 10 }} key={index}>
 
   <LinearGradient
     start={{x: 0, y: 0}}
