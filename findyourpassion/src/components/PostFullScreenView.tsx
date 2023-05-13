@@ -11,6 +11,7 @@ import {TouchableOpacity} from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {ReactNativeZoomableView} from '@openspacelabs/react-native-zoomable-view';
 import {ActivityIndicator} from 'react-native';
+import VideoPlayer from 'react-native-video-controls';
 
 type Props = {
     showContent: {show: boolean; media: Array<Object>; index: number };
@@ -38,6 +39,7 @@ export default function PostFullScreenView({showContent, setShowContent, data}: 
                 justifyContent: 'center',
                 backgroundColor: '#000',
               }}>
+               { item.type === 'image'?
               <MaterialCommunityIcons
                 name="close"
                 size={30}
@@ -49,7 +51,7 @@ export default function PostFullScreenView({showContent, setShowContent, data}: 
                   zIndex: 9999,
                 }}
                 onPress={() => setShowContent({show: false, media: [], index: 0})}
-              />
+              /> : null}
               {/* <Text style={{color: 'red'}}>{JSON.stringify(item.url)}</Text> */}
               {item.type === 'image' ? (
                 <ReactNativeZoomableView
@@ -73,37 +75,42 @@ export default function PostFullScreenView({showContent, setShowContent, data}: 
                   />
                 </ReactNativeZoomableView>
               ) : item.type === 'video' ? (
+
                 <>
-                {
+                 {
                     videoLoader ?
-                     <View  style={[styles.video, {backgroundColor: '#000', justifyContent: 'center', alignItems:'center'}]}>
+                     <View  style={{position: 'absolute', alignSelf: 'center'}}>
                        <ActivityIndicator color={'#fff'} size={40}/>
                        <Text style={{color: '#fff', fontSize: 14}}>Please wait while video loading...</Text>
                      </View>
                      :
                      null
                   }
-                <Video
+                    <VideoPlayer
+                    
                   source={{
                     uri: item.url,
                   }}
+                  _on
                   style={{
                     width: DEVICE_WIDTH,
-                    height: DEVICE_HEIGHT * 0.3,
+                    height: '100%',
                     alignSelf: 'center',
                   }}
-                  resizeMode="cover"
+                  resizeMode="contain"
                   controls={true}
                   //  posterResizeMode='cover'
                   onLoadStart={() => setVideoLoader(true)}
                   onLoad={() => setVideoLoader(false)}
-                  
-                  audioOnly={true}
+                  // audioOnly={true}
+                  _onBack={()=> setShowContent({show: false, media: [], index: 0})}
                 />
+               
+               
                 </>
               ) : null}
             </View>
-            {
+            {/* {
                 data ?
                 <TouchableOpacity
               onPress={() =>
@@ -124,7 +131,7 @@ export default function PostFullScreenView({showContent, setShowContent, data}: 
               <Text style={{color: '#fff', fontSize: 18}}> View post</Text>
             </TouchableOpacity>
             :null
-            }
+            } */}
           </>
         );
       };

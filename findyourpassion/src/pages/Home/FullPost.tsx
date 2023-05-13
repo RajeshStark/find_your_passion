@@ -15,7 +15,7 @@ import {DEVICE_HEIGHT, DEVICE_WIDTH} from '../../utils/Diimensions';
 import {useGlobal} from '../../Hooks/GloblaContext';
 import LinearGradient from 'react-native-linear-gradient';
 import {commentData} from '../../Data/myfeed';
-import CommentBox from './CommentBox';
+import CommentBox from './CommentContainer';
 import MyModal from '../../components/MyModal';
 import {ActivityIndicator} from 'react-native';
 import Video from 'react-native-video';
@@ -31,8 +31,7 @@ export default function FullPost({navigation, route}) {
     media: [],
     index: 0,
   });
-  const [mute, setmute] = useState(true);
-  const [videoLoader, setVideoLoader] = useState(true);
+
   const [play, setPlay] = useState(true);
 
   return (
@@ -85,49 +84,33 @@ export default function FullPost({navigation, route}) {
                 </View>
               </View>
 
-              {/* <FlatList
-                data={item.media}
-                renderItem={({item, index}) => (
-                  <>
-                    {item.type == 'image' ? (
-                      <Pressable
-                        onPress={() =>
-                          setShowContent({
-                            show: true,
-                            media: item,
-                            index: 0,
-                          })
-                        }>
-                        <Image
-                          source={{uri: item.url}}
-                          style={{
-                            resizeMode: 'cover',
-                            // flex: 1,
-                            // aspectRatio: 1.5,
-                            width: DEVICE_WIDTH
-                          }}
-                        />
-                      </Pressable>
-                    ) : item.type === 'video' ? (
-                      <>
-                        <Pressable onPress={() => setPlay(!play)}>
-                          {videoLoader ? (
-                            <View
-                              style={[
-                                styles.video,
-                                {
-                                  backgroundColor: '#000',
-                                  justifyContent: 'center',
-                                  alignItems: 'center',
-                                },
-                              ]}>
-                              <ActivityIndicator color={'#fff'} size={40} />
-                              <Text style={{color: '#fff', fontSize: 14}}>
-                                Please wait while video loading...
-                              </Text>
-                            </View>
-                          ) : null}
+              {item.media.map((item, index) => (
+                <>
+                  {item.type == 'image' ? (
+                    <Pressable
+                      onPress={() =>
+                        setShowContent({
+                          show: true,
+                          media: item,
+                          index: 0,
+                        })
+                      }>
+                      <Image
+                        source={{uri: item.url}}
+                        style={{
+                          resizeMode: 'cover',
+                          flex: 1,
+                          aspectRatio: 1.5,
+                          height: '100%',
+                          // width: DEVICE_WIDTH
+                        }}
+                      />
+                    </Pressable>
+                  ) : item.type === 'video' ? (
+                    <>
+                      <Pressable onPress={() => setPlay(!play)}>
 
+                        <View style={styles.video}>
                           <Video
                             source={{
                               uri: item.url,
@@ -136,181 +119,36 @@ export default function FullPost({navigation, route}) {
                             resizeMode="cover"
                             controls={false}
                             audioOnly={true}
-                            muted={mute}
-                            paused={!play}
-                            onLoadStart={() => setVideoLoader(true)}
-                            onLoad={() => setVideoLoader(false)}
-
-                            // onVideoBuffer={() => setVideoLoader(true)}
-                            // onLoadStart={}
-                            // posterResizeMode='cover'
-                            // poster="https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/English_Cocker_Spaniel_4.jpg/800px-English_Cocker_Spaniel_4.jpg"
+                            muted={true}
+                            paused={true}
+                            posterResizeMode="cover"
+                            poster="https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/English_Cocker_Spaniel_4.jpg/800px-English_Cocker_Spaniel_4.jpg"
                           />
-
-                          {play ? null : (
-                            <>
-                              <Ionicons
-                                style={{
-                                  alignSelf: 'center',
-                                  backgroundColor: '#000',
-                                  borderRadius: 50,
-                                  padding: 10,
-                                  marginTop: -DEVICE_HEIGHT * 0.17,
-                                }}
-                                name={'play'}
-                                color={'#fff'}
-                                size={20}
-                                onPress={() => setPlay(!play)}
-                              />
-                              <View
-                                style={{
-                                  flexDirection: 'row',
-                                  justifyContent: 'space-between',
-                                }}>
-                                <Ionicons
-                                  style={{marginTop: 60, margin: 5}}
-                                  name={
-                                    mute ? 'ios-volume-mute' : 'ios-volume-high'
-                                  }
-                                  color={'#fff'}
-                                  size={25}
-                                  onPress={() => setmute(!mute)}
-                                />
-                                <Octicons
-                                  style={{marginTop: 65, margin: 5}}
-                                  name={'screen-full'}
-                                  color={'#fff'}
-                                  size={20}
-                                  onPress={() =>
-                                    setShowContent({
-                                      show: true,
-                                      media: item,
-                                      index: index + 1,
-                                    })
-                                  }
-                                />
-                              </View>
-                            </>
-                          )}
-                        </Pressable>
-                      </>
-                    ) : null}
-                  </>
-                )}
-                keyExtractor={({item, index}) => index}
-              /> */}
-
-              {
-                item.media.map((item, index) => <>
-                    {item.type == 'image' ? (
-                      <Pressable
-                        onPress={() =>
-                          setShowContent({
-                            show: true,
-                            media: item,
-                            index: 0,
-                          })
-                        }>
-                        <Image
-                          source={{uri: item.url}}
-                          style={{
-                            resizeMode: 'cover',
-                            flex: 1,
-                            aspectRatio: 1.5,
-                            height: '100%'
-                            // width: DEVICE_WIDTH
-                          }}
-                        />
-                      </Pressable>
-                    ) : item.type === 'video' ? (
-                      <>
-                        <Pressable onPress={() => setPlay(!play)}>
-                          {videoLoader ? (
-                            <View
-                              style={[
-                                styles.video,
-                                {
-                                  backgroundColor: '#000',
-                                  justifyContent: 'center',
-                                  alignItems: 'center',
-                                },
-                              ]}>
-                              <ActivityIndicator color={'#fff'} size={40} />
-                              <Text style={{color: '#fff', fontSize: 14}}>
-                                Please wait while video loading...
-                              </Text>
-                            </View>
-                          ) : null}
-
-                          <Video
-                            source={{
-                              uri: item.url,
+                          <Ionicons
+                            style={{
+                              alignSelf: 'center',
+                              backgroundColor: '#000',
+                              borderRadius: 50,
+                              padding: 10,
+                              marginTop: -DEVICE_HEIGHT * 0.17,
                             }}
-                            style={styles.video}
-                            resizeMode="cover"
-                            controls={false}
-                            audioOnly={true}
-                            muted={mute}
-                            paused={!play}
-                            onLoadStart={() => setVideoLoader(true)}
-                            onLoad={() => setVideoLoader(false)}
-
-                            // onVideoBuffer={() => setVideoLoader(true)}
-                            // onLoadStart={}
-                            // posterResizeMode='cover'
-                            // poster="https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/English_Cocker_Spaniel_4.jpg/800px-English_Cocker_Spaniel_4.jpg"
+                            name={'play'}
+                            color={'#fff'}
+                            size={20}
+                            onPress={() =>
+                              setShowContent({
+                                show: true,
+                                media: item,
+                                index: index + 1,
+                              })
+                            }
                           />
-
-                          {play ? null : (
-                            <>
-                              <Ionicons
-                                style={{
-                                  alignSelf: 'center',
-                                  backgroundColor: '#000',
-                                  borderRadius: 50,
-                                  padding: 10,
-                                  marginTop: -DEVICE_HEIGHT * 0.17,
-                                }}
-                                name={'play'}
-                                color={'#fff'}
-                                size={20}
-                                onPress={() => setPlay(!play)}
-                              />
-                              <View
-                                style={{
-                                  flexDirection: 'row',
-                                  justifyContent: 'space-between',
-                                }}>
-                                <Ionicons
-                                  style={{marginTop: 60, margin: 5}}
-                                  name={
-                                    mute ? 'ios-volume-mute' : 'ios-volume-high'
-                                  }
-                                  color={'#fff'}
-                                  size={25}
-                                  onPress={() => setmute(!mute)}
-                                />
-                                <Octicons
-                                  style={{marginTop: 65, margin: 5}}
-                                  name={'screen-full'}
-                                  color={'#fff'}
-                                  size={20}
-                                  onPress={() =>
-                                    setShowContent({
-                                      show: true,
-                                      media: item,
-                                      index: index + 1,
-                                    })
-                                  }
-                                />
-                              </View>
-                            </>
-                          )}
-                        </Pressable>
-                      </>
-                    ) : null}
-                  </>)
-              }
+                        </View>
+                      </Pressable>
+                    </>
+                  ) : null}
+                </>
+              ))}
               <Text
                 style={{
                   fontSize: 16,
@@ -424,7 +262,6 @@ export default function FullPost({navigation, route}) {
         showContent={showContent}
         setShowContent={setShowContent}
       />
-
     </SafeAreaView>
   );
 }
@@ -455,7 +292,7 @@ const styles = StyleSheet.create({
   personname: {fontSize: 16, fontWeight: '600'},
   persontitle: {fontSize: 14, marginLeft: 10},
   video: {
-    width: DEVICE_WIDTH ,
+    width: DEVICE_WIDTH,
     height: DEVICE_HEIGHT * 0.3,
     alignSelf: 'center',
   },

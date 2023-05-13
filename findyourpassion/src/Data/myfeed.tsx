@@ -142,6 +142,7 @@ export const myfeed = [
 
 export const commentData = [
   {
+    id: 1,
     name: 'Rajesh Sangapogu',
     avatar:
       'https://www.pngkit.com/png/detail/911-9115516_avatar-icon-deadpool.png',
@@ -150,6 +151,7 @@ export const commentData = [
     claps: 20,
     isclapped: true,
     commentor_id: "abc",
+    type:'comment',
     img: 'https://media.istockphoto.com/id/475341930/photo/breathe-deep.jpg?s=612x612&w=0&k=20&c=xFE6rYH4HjUfuFFqyCLB8IaBATAB3_50xfeoLqtWJaI=',
     replies: [
       {
@@ -160,7 +162,8 @@ export const commentData = [
           'Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti blanditiis voluptates explicabo adipisci est expedita, et quam! Quaerat saepe amet atque numquam, ex totam illum. Repellendus quod ipsa totam pariatur.',
         claps: 20,
         isclapped: true,
-        commentor_id: "abc"
+        commentor_id: "abc",
+        type:'reply',
 
       },
       {
@@ -171,28 +174,54 @@ export const commentData = [
           'Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti blanditiis voluptates explicabo adipisci est expedita, et quam! Quaerat saepe amet atque numquam, ex totam illum. Repellendus quod ipsa totam pariatur.',
         claps: 20,
         isclapped: true,
-        commentor_id: "abc"
+        commentor_id: "abc",
+        type:'reply',
+      },
+      {
+        name: 'Rajesh Sangapogu',
+        avatar:
+          'https://www.pngkit.com/png/detail/911-9115516_avatar-icon-deadpool.png',
+        comment:
+          'Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti blanditiis voluptates explicabo adipisci est expedita, et quam! Quaerat saepe amet atque numquam, ex totam illum. Repellendus quod ipsa totam pariatur.',
+        claps: 20,
+        isclapped: true,
+        commentor_id: "abc",
+        type:'reply',
       },
     ],
   },
 
   {
+    id: 2,
     name: 'Prasanna Sangapogu',
     avatar:'https://static.vecteezy.com/system/resources/thumbnails/006/631/154/small/portrait-of-caucasian-woman-avatar-of-female-person-icon-of-adult-in-flat-style-headshot-vector.jpg',
     comment: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti blanditiis voluptates explicabo adipisci est expedita, et quam! Quaerat saepe amet atque numquam, ex totam illum. Repellendus quod ipsa totam pariatur.',
     claps: 1,
     isclapped: true,
     commentor_id: "acb",
-    replies:[]
+    type:'comment',
+    replies:[{
+      name: 'Rajesh Sangapogu',
+      avatar:
+        'https://www.pngkit.com/png/detail/911-9115516_avatar-icon-deadpool.png',
+      comment:
+        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti blanditiis voluptates explicabo adipisci est expedita, et quam! Quaerat saepe amet atque numquam, ex totam illum. Repellendus quod ipsa totam pariatur.',
+      claps: 20,
+      isclapped: true,
+      commentor_id: "abc",
+      type:'reply',
+    },]
   },
 
   {
+    id: 3,
     name: 'Sravan Sam',
     avatar:'https://png.pngitem.com/pimgs/s/78-785878_batman-icon-batman-avatar-icon-hd-png-download.png',
     comment: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti blanditiis voluptates explicabo adipisci est expedita, et quam! Quaerat saepe amet atque numquam, ex totam illum. Repellendus quod ipsa totam pariatur.',
     claps: 20,
     isclapped: true,
     commentor_id: "ccf",
-    replies:[]
+    replies:[],
+    type:'comment',
   },
 ];

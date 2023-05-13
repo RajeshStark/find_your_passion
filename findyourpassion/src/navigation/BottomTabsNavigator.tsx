@@ -141,6 +141,11 @@ export default function MyTabs() {
 
       <MyBottomsheet
         visible={visible}
+        onPress={() => setVisible({  visible: false,
+          show: false,
+          type: '',
+          snappoint: [SCREEN_HEIGHT * 0.5],
+        })}
         children={
           <View>
             <Text

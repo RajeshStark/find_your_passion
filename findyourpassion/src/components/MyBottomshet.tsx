@@ -5,13 +5,16 @@ import BottomSheet, {
   BottomSheetScrollView,
   SCREEN_HEIGHT,
 } from "@gorhom/bottom-sheet";
+import Ionicons from "react-native-vector-icons/Ionicons";
 
 type Props = {
   visible: { visible: boolean; snappoint: [] } | any;
   children: React.ReactElement;
+  onPress: () => void;
 };
-const MyBottomsheet = ({ visible, children }: Props) => {
+const MyBottomsheet = ({ visible, children, onPress }: Props) => {
   const bottomSheetRef = useRef<BottomSheet>(null);
+  const topmargin = visible.snappoint[0]
 
   const handleSheetChanges = useCallback((index: number) => {
     console.log("handleSheetChanges", index);
@@ -50,6 +53,29 @@ const MyBottomsheet = ({ visible, children }: Props) => {
     <>
       {visible.visible ? (
         <>
+        <TouchableOpacity
+              style={{
+                backgroundColor: "#F0F1F4",
+                width: 40,
+                height: 40,
+                borderRadius: 20,
+                alignItems: "center",
+                justifyContent: "center",
+                position: "absolute",
+                bottom: topmargin - 20,
+                right: 20,
+                zIndex: 999,
+              }}
+              onPress={onPress}
+            >
+              <Ionicons
+                name="close-outline"
+                size={28}
+                color={"#000000"}
+                
+              />
+            </TouchableOpacity>
+        
           <BottomSheet
             ref={bottomSheetRef}
             index={0}
