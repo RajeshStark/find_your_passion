@@ -1,25 +1,28 @@
-import {View, Text, SafeAreaView, StyleSheet} from 'react-native';
+import {View, Text, SafeAreaView, StyleSheet, FlatList, Image} from 'react-native';
 import React from 'react';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
-import Ionicons from 'react-native-vector-icons/Ionicons';
-import Octicons from 'react-native-vector-icons/Octicons';
-import Fontisto from 'react-native-vector-icons/Fontisto';
 import AntDesign from 'react-native-vector-icons/AntDesign';
-import Feather from 'react-native-vector-icons/Feather';
-
 import {useGlobal} from '../../Hooks/GloblaContext';
-import { DEVICE_HEIGHT, DEVICE_WIDTH } from '../../utils/Diimensions';
+import { DEVICE_WIDTH } from '../../utils/Diimensions';
+import AppStrings from '../../utils/Strings';
+import PostCard from '../../components/PostCard/PostCard';
+import PostCardData from '../../Data/PostCarddata';
+import Entypo from 'react-native-vector-icons/Entypo';
 
 export default function Home() {
   const {colors} = useGlobal();
   return (
-    <SafeAreaView>
-      {/* <View style={[styles.header, {backgroundColor: colors?.textColor}]}>
-        <Text style={{fontSize: 26,fontWeight:'700', fontFamily: 'roboto', color: colors?.AppThemeColor, fontStyle:'italic', }}>Debate app</Text>
-        <Octicons name='bell-fill' size={25} color={colors?.AppThemeColor} />
-      </View> */}
+    <SafeAreaView style={{flex: 1, backgroundColor: colors?.BackgroundColor}}>
+      <View style={[styles.header, {backgroundColor: colors?.BackgroundColor}]}>
+      <Text style={{fontSize: 28,color: colors?.AppThemeColor, fontFamily: "RubikMaps-Regular"}}>{AppStrings.AppName}</Text>
+        <AntDesign name='message1' size={25} color={colors?.AppThemeColor} />
+      </View>
 
+      <FlatList
+      contentContainerStyle={{alignItems:'center',}}
+       data={PostCardData}
+       renderItem={({item}) => <PostCard item={item}/>}
+      />
+ 
     </SafeAreaView>
   );
 }

@@ -72,43 +72,7 @@ export default function AddPost({cancel}: Props) {
         </View>
       </View>
 
-      <View style={styles.datacontainer}>
-        <MyInput
-          value={debate.title}
-          onChangeText={txt => setDebate({...debate, title: txt})}
-          placeholder="what's the debateroom topic?"
-          size={0.95}
-          label="Debateroom name"
-          isRequired={true}
-        />
-
-        <MyInput
-          value={debate.yourgroup}
-          onChangeText={txt => setDebate({...debate, yourgroup: txt})}
-          placeholder="what's your group/side name"
-          size={0.95}
-          label="Your group name"
-          isRequired={true}
-        />
-
-        <MyInput
-          value={debate.oppositegroupname}
-          onChangeText={txt => setDebate({...debate, oppositegroupname: txt})}
-          placeholder="what's opposite group/side name"
-          size={0.95}
-          label="Opposite group name"
-          isRequired={true}
-        />
-
-        <MyInput
-          value={debate.description}
-          onChangeText={txt => setDebate({...debate, description: txt})}
-          placeholder="write briefly about the topic?"
-          size={0.95}
-          multiline={true}
-        />
-
-      </View>
+ 
     </SafeAreaView>
   );
 }

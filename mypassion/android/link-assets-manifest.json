@@ -1,0 +1,13 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "src/assets/fonts/RubikDoodleShadow-Regular.ttf",
+      "sha1": "1b0092781395a98142548d15929cfbb2c16e2334"
+    },
+    {
+      "path": "src/assets/fonts/RubikMaps-Regular.ttf",
+      "sha1": "c78a6492f8a56dd6d8f725544be079534f557022"
+    }
+  ]
+}

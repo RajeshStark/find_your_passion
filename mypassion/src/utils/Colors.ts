@@ -1,7 +1,7 @@
 
 
 const light = {
-    AppThemeColor: '#FF0075',
+    AppThemeColor: "#F46918", //'#FF0075',
     BackgroundColor : "#fff",
     textColor: '#09051C',
     cardBackground : "#fff"
